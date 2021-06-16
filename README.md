@@ -1,12 +1,12 @@
 ## dhtcrawler2
 
-dhtcrawler is a DHT crawler written in erlang. It can join a DHT network and crawl many P2P torrents. The program save all torrent info into database and provide an http interface to search a torrent by a keyword.
+dhtcrawler is a DHT crawler written in erlang. It can join a DHT network and crawl many P2P torrents. The program saves all torrent info into database and provide an http interface to search a torrent by a keyword.
 
 ![screenshot](https://raw.github.com/kevinlynx/dhtcrawler/master/screenshot.png)
 
-dhtcrawler2 is an extended version to [dhtcrawler](https://github.com/kevinlynx/dhtcrawler). It has improved a lot on crawling speed, and much more stable. 
+dhtcrawler2 is an extended version to [dhtcrawler](https://github.com/kevinlynx/dhtcrawler). It has improved a lot on crawling speed, and is much more stable. 
 
-This git branch maintain pre-compiled erlang files to start dhtcrawler2 directly. So you don't need to compile it yourself, just download it and run it to collect torrents and search a torrent by a keyword. 
+This git branch maintains pre-compiled erlang files to start dhtcrawler2 directly. So you don't need to compile it yourself, just download it and run it to collect torrents and search a torrent by a keyword. 
 
 Enjoy it!
 
@@ -28,7 +28,7 @@ Also you can check more technique information at my blog site (Chinese) [codemac
 
 ## Source code
 
-dhtcrawler is totally open source, and can be used in any purpose, but you should keep my name on, copyright by me please. You can checkout dhtcrawler2 source code in this git repo **src** branch.
+dhtcrawler is totally open source, and can be used for any purpose, but you should keep my name on, copyright by me please. You can checkout dhtcrawler2 source code in this git repo **src** branch.
 
 ## Config
 
@@ -36,7 +36,7 @@ Most config value is in `priv/dhtcrawler.config`, when you first run dhtcrawler,
 
 ## Mongodb Replica set
 
-It's not related about dhtcrawler, but only Mongodb, try figure it yourself.
+It's not related to dhtcrawler, but only Mongodb, try figure it yourself.
 
 ## Another http front-end
 
@@ -44,11 +44,11 @@ Yes of course you can write another http front-end UI based on the torrent datab
 
 ## Sphinx
 
-Yes, dhtcrawler2 support **sphinx** search. There's a tool named `sphinx-builder` load torrents from database and create sphinx index. `crawler-http` can also search text by sphinx. 
+Yes, dhtcrawler2 supports **sphinx** search. There's a tool named `sphinx-builder` load torrents from database and create sphinx index. `crawler-http` can also search text by sphinx. 
 
-dhtcrawler2 use mongodb text search by default, to use sphinx, follow these steps below:
+dhtcrawler2 uses mongodb text search by default, to use sphinx, follow these steps below:
 
-* Download sphinx, the version tested is a fork version named `coreseek` which support Chinese characters. [coreseek4.1](http://www.coreseek.cn/news/14/52/)
+* Download sphinx, the version tested is a fork version named `coreseek` which supports Chinese characters. [coreseek4.1](http://www.coreseek.cn/news/14/52/)
 * unzip the binary archive and add `bin` directory to `PATH` environment variable, so that dhtcrawler can invoke `indexer` tool
 * config `etc/csft.conf` file
     * add a delta index, i.e:
@@ -67,7 +67,7 @@ dhtcrawler2 use mongodb text search by default, to use sphinx, follow these step
     * change the other directories, better to use absolute path
 * run `win_init_sphinx_index.bat` to generate a default sphinx-builder config file, and terminate `win_init_sphinx_index.bat`
 * config `priv/sphinx_builder.config`, specify `main` and `delta` sphinx index source file name, `main` and `delta` index name and sphinx config file, these file names must match these configs you write in `etc/csft.conf`
-* run `win_init_sphinx_index.bat` again to initialize sphinx index file, terminate `win_init_sphinx_index.bat` and if it initialize sphinx index successfully, never run it again
+* run `win_init_sphinx_index.bat` again to initialize sphinx index file, terminate `win_init_sphinx_index.bat` and if it initializes sphinx index successfully, never run it again
 * run sphinx `searchd` server
 * run `win_start_sphinx_builder` to start sphinx-builder, it will read torrents from your torrent database and build the index into sphinx
 * change `priv/hash_reader.config` `search_method` to `sphinx`, so that `hash_reader` will not build mongodb text search index any more
